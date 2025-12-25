@@ -14,4 +14,3 @@ function getHumanChoice() {
     return choice[decision];
 }
 
-console.log(getHumanChoice());
