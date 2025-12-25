@@ -17,4 +17,11 @@ function getComputerChoice() {
     
 }
 
-console.log(getComputerChoice());
+function getHumanChoice() {
+    const choice = {1:"Rock", 2:"Paper", 3:"Scissors"};
+    let decision = Number(prompt("Choose with the following numbers: 1:Rock, 2:Paper, 3:Scissors"));
+
+    return choice[decision];
+}
+
+console.log(getHumanChoice());
