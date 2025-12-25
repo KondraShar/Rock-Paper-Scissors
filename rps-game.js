@@ -54,3 +54,27 @@ function playRound(humanChoice=getHumanChoice(), computerChoice=getComputerChoic
 //const humSelection = getHumanChoice();
 
 //playRound(humSelection, compSelection);
+
+// Write the logic to play the entire game
+//
+function playGame() {
+    humanScore = 0;
+    computerScore = 0;
+    let winner;
+
+
+    for (i = 0; i < 5; ++i) {
+        playRound();
+    }
+
+    // Winner?
+    if ( humanScore == computerScore ) {
+        console.log("No winner... Score: " + humanScore + ":" + computerScore);
+    } else if (humanScore > computerScore) {
+        console.log("--> YOU WIN !!! Score: " + humanScore + ":" + computerScore);
+    } else {
+        console.log("--> YOU LOSE... Score: " + humanScore + ":" + computerScore);
+    }
+}
+
+playGame();
