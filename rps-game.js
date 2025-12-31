@@ -62,10 +62,8 @@ function playGame() {
     computerScore = 0;
     let winner;
 
-
-    for (i = 0; i < 5; ++i) {
-        playRound();
-    }
+    
+    
 
     // Winner?
     if ( humanScore == computerScore ) {
