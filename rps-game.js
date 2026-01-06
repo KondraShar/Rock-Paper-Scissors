@@ -18,9 +18,8 @@ function getComputerChoice() {
 
 // Prompt user int choice - return string
 //
-function getHumanChoice() {
+function getHumanChoice(decision) {
     const choice = {1:"Rock", 2:"Paper", 3:"Scissors"};
-    let decision = Number(prompt("Choose with the following numbers: 1:Rock, 2:Paper, 3:Scissors"));
 
     return choice[decision];
 }
@@ -32,7 +31,7 @@ let computerScore = 0;
 
 // Play a round
 //
-function playRound(humanChoice=getHumanChoice(), computerChoice=getComputerChoice()) {
+function playRound(humanChoice, computerChoice=getComputerChoice()) {
     if ( humanChoice == computerChoice ) {
         console.log("Boring!!! It is the same.. " + humanChoice + " neutral to " + computerChoice);
     } else if ( ( humanChoice == "Paper" && computerChoice == "Rock" ) || (humanChoice == "Scissors" && computerChoice == "Paper") ) {
@@ -76,3 +75,21 @@ function playGame() {
 }
 
 playGame();
+
+// Buttons to play
+const documentBody = document.querySelector("body");
+
+const rockButton = document.createElement("button");
+rockButton.textContent = "Rock";
+documentBody.appendChild(rockButton);
+const paperButton = document.createElement("button");
+paperButton.textContent = "Paper";
+documentBody.appendChild(paperButton);
+const scissorsButton = document.createElement("button");
+scissorsButton.textContent = "Scissors";
+documentBody.appendChild(scissorsButton);
+
+documentBody.addEventListener("click", (event) => {
+    playRound(event.target.textContent);
+    //console.log(event.target.textContent);
+});
