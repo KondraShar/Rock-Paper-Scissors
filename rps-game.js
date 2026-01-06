@@ -91,5 +91,4 @@ documentBody.appendChild(scissorsButton);
 
 documentBody.addEventListener("click", (event) => {
     playRound(event.target.textContent);
-    //console.log(event.target.textContent);
 });
