@@ -5,7 +5,6 @@
 
 //////////////////////////////////////////////////
 */
-console.log("Welcome to the game of Rock-Paper-Scissors!");
 
 // Get random computer int choice - return string
 //
@@ -24,13 +23,11 @@ function getHumanChoice(decision) {
     return choice[decision];
 }
 
-// Initialize scores for each player
-//
+
 let humanScore = 0;
 let computerScore = 0;
 
-// Play a round
-//
+
 function playRound(humanChoice, computerChoice=getComputerChoice()) {
     if ( humanChoice == computerChoice ) {
         console.log("Boring!!! It is the same.. " + humanChoice + " neutral to " + computerChoice);
@@ -54,8 +51,7 @@ function playRound(humanChoice, computerChoice=getComputerChoice()) {
 
 //playRound(humSelection, compSelection);
 
-// Write the logic to play the entire game
-//
+
 function playGame() {
     humanScore = 0;
     computerScore = 0;
