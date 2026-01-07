@@ -27,6 +27,8 @@ playButtons.addEventListener("click", (event) => {
     if(isGameWon == true) {
         humanScore = 0;
         computerScore = 0;
+        humanBox.style.backgroundColor = "white";
+        computerBox.style.backgroundColor = "white";
         humanScoreDisplay.textContent = humanScore;
         computerScoreDisplay.textContent = computerScore;
         isGameWon = false;
@@ -92,8 +94,10 @@ function whenGameWon() {
 
 function setWinnerView() {
     if (humanScore > computerScore) {
-                console.log("--> YOU WIN !!! Score: " + humanScore + ":" + computerScore);
+            messageDisplay.textContent = "YOU did it!!";
+            humanBox.style.backgroundColor = "rgb(51, 88, 26)";
         } else {
-            console.log("--> YOU LOSE... Score: " + humanScore + ":" + computerScore);
+            messageDisplay.textContent = "Probably AI inside...";
+            computerBox.style.backgroundColor = "rgb(182, 53, 53)";
         };
 };
