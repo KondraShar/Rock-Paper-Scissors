@@ -19,12 +19,13 @@ playButtons.addEventListener("click", (event) => {
         !event.target.classList.contains("scissors")) {
         return;
     }
-        if(isGameWon == true) {
-            // Reset score and ui
-            humanScore = 0;
-            computerScore = 0;
-            isGameWon = false;
-            playRound(event.target.textContent);
+
+    if(isGameWon == true) {
+        // Reset score and ui
+        humanScore = 0;
+        computerScore = 0;
+        isGameWon = false;
+        playRound(event.target.textContent);
         } else {
             playRound(event.target.textContent);
         };
@@ -39,18 +40,16 @@ function getComputerChoice() {
 function playRound(humanChoice, computerChoice=getComputerChoice()) {
     if ( humanChoice == computerChoice ) {
         console.log("Boring!!! It is the same.. " + humanChoice + " neutral to " + computerChoice);
-    } else if ( ( humanChoice == "Paper" && computerChoice == "Rock" ) || (humanChoice == "Scissors" && computerChoice == "Paper") ) {
-        console.log("You win!! " + humanChoice + " beats " + computerChoice);
-        ++humanScore;
-    } else if ( (humanChoice == "Rock" && computerChoice == "Scissors") ) {
-        console.log("You win!! " + humanChoice + " beats " + computerChoice);
-        ++humanScore;
-    } else if ( ( computerChoice == "Paper" && humanChoice == "Rock" ) || (computerChoice == "Scissors" && humanChoice == "Paper") ) {
-        console.log("You lose!! " + computerChoice + " beats " + humanChoice);
-        ++computerScore;
-    } else if ( (humanChoice == "Rock" && computerChoice == "Scissors") ) {
-        console.log("You lose!! " + computerChoice + " beats " + humanChoice);
-        ++computerScore;
+    } else if (
+        (humanChoice === "Rock" && computerChoice === "Scissors") ||
+        (humanChoice === "Paper" && computerChoice === "Rock") ||
+        (humanChoice === "Scissors" && computerChoice === "Paper")
+    ) {
+        console.log("You win this round!");
+        humanScore++;
+    } else {
+        console.log("Computer wins this round!");
+        computerScore++;
     }
     whenGameWon();
 }
