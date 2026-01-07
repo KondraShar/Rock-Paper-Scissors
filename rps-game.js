@@ -12,6 +12,11 @@ let isGameWon = false;
 const targetScore = 5;
 const computerChoice = getComputerChoice();
 const playButtons = document.querySelector(".button-container");
+const humanScoreDisplay = document.querySelector(".human-score");
+const computerScoreDisplay = document.querySelector(".computer-score");
+const messageDisplay = document.querySelector(".message-container");
+const humanBox = document.getElementById("#humanBox");
+const computerBox = document.getElementById("#computerBox");
 
 playButtons.addEventListener("click", (event) => {
     if (!event.target.classList.contains("rock") &&
@@ -39,6 +44,8 @@ function getComputerChoice() {
 
 function playRound(humanChoice, computerChoice) {
     if ( humanChoice == computerChoice ) {
+        
+
         console.log("Boring!!! It is the same.. " + humanChoice + " neutral to " + computerChoice);
     } else if (
         (humanChoice === "Rock" && computerChoice === "Scissors") ||
