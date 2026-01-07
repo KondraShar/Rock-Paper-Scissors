@@ -44,3 +44,12 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+button {
+    height: 28px;
+    width: 78px;
+    border: 2px solid black;
+    border-radius: 6px;
+    background-color: white;
+    font-family: monospace;
+}
