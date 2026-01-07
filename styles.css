@@ -30,9 +30,17 @@ body {
     border: 2px solid black;
     border-radius: 14px;
     width: 124px;
-    display: flex;;
-    justify-content: center;
+    height: 45px;
+    padding: 5px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    gap: 8px;
     align-items: center;
+}
+
+.score-box > p {
+    margin: 0;
 }
 
 .message-container {
