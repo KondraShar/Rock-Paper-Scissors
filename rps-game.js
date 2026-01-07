@@ -29,6 +29,7 @@ playButtons.addEventListener("click", (event) => {
         computerScore = 0;
         humanBox.style.backgroundColor = "white";
         computerBox.style.backgroundColor = "white";
+        messageDisplay.style.fontSize = "1em";
         humanScoreDisplay.textContent = humanScore;
         computerScoreDisplay.textContent = computerScore;
         isGameWon = false;
@@ -95,9 +96,11 @@ function whenGameWon() {
 function setWinnerView() {
     if (humanScore > computerScore) {
             messageDisplay.textContent = "YOU did it!!";
+            messageDisplay.style.fontSize = "14px";
             humanBox.style.backgroundColor = "rgb(51, 88, 26)";
         } else {
             messageDisplay.textContent = "Probably AI inside...";
+            messageDisplay.style.fontSize = "14px";
             computerBox.style.backgroundColor = "rgb(182, 53, 53)";
         };
 };
