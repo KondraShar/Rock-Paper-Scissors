@@ -24,9 +24,6 @@ playButtons.addEventListener("click", (event) => {
         return;
     }
 
-    messageDisplay.classList.remove('highlight-green');
-    messageDisplay.classList.remove('highlight-red');
-
     if(isGameWon == true) {
         humanScore = 0;
         computerScore = 0;
@@ -45,32 +42,41 @@ function getComputerChoice() {
     return choice[random];
 };
 
+function resetHighlight() {
+    setTimeout(() => {
+            messageDisplay.classList.remove('highlight-red', 'highlight-green');
+    }, 220);
+    setTimeout(() => {
+            humanBox.classList.remove('highlight-red', 'highlight-green');
+    }, 220);
+    setTimeout(() => {
+            computerBox.classList.remove('highlight-red', 'highlight-green');
+    }, 220);
+};
+
 function playRound(humanChoice, computerChoice = getComputerChoice()) {
     if ( humanChoice == computerChoice ) {
         messageDisplay.textContent = humanChoice + " vs " + computerChoice;
-        messageDisplay.classList.add('highlight-red');
-        setTimeout(() => {
-            messageDisplay.classList.remove('highlight-red', 'highlight-green');
-        }, 220);
         console.log("Boring!!! It is the same.. " + humanChoice + " neutral to " + computerChoice);
+        messageDisplay.classList.add('highlight-red');
+        humanBox.classList.add('highlight-red');
+        computerBox.classList.add('highlight-red');
+        resetHighlight();
     } else if (
         (humanChoice === "Rock" && computerChoice === "Scissors") ||
         (humanChoice === "Paper" && computerChoice === "Rock") ||
         (humanChoice === "Scissors" && computerChoice === "Paper")
     ) {
-        messageDisplay.classList.add('highlight-green');
-        setTimeout(() => {
-            messageDisplay.classList.remove('highlight-red', 'highlight-green');
-        }, 220);
         messageDisplay.textContent = "You win this round!";
         humanScoreDisplay.textContent = ++humanScore;
+        messageDisplay.classList.add('highlight-green');
+        resetHighlight();
     } else {
-        messageDisplay.classList.add('highlight-red');
-        setTimeout(() => {
-            messageDisplay.classList.remove('highlight-red', 'highlight-green');
-        }, 220);
+        
         messageDisplay.textContent = "Computer wins this round!";
         computerScoreDisplay.textContent = ++computerScore;
+        messageDisplay.classList.add('highlight-red');
+        resetHighlight();
     }
     whenGameWon();
 }
