@@ -69,12 +69,14 @@ function playRound(humanChoice, computerChoice = getComputerChoice()) {
     ) {
         messageDisplay.textContent = "You win this round!";
         humanScoreDisplay.textContent = ++humanScore;
+        humanBox.classList.add('highlight-green');
         messageDisplay.classList.add('highlight-green');
         resetHighlight();
     } else {
         
         messageDisplay.textContent = "Computer wins this round!";
         computerScoreDisplay.textContent = ++computerScore;
+        computerBox.classList.add('highlight-red');
         messageDisplay.classList.add('highlight-red');
         resetHighlight();
     }
