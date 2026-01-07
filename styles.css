@@ -28,16 +28,20 @@ body {
 }
 
 .box {
-    border: 2px solid black;
-    border-radius: 14px;
-    width: 124px;
-    height: 45px;
     padding: 5px 0px;
     display: flex;
     flex-direction: column;
     justify-content:center;
     gap: 8px;
     align-items: center;
+}
+
+.human-score-box,
+.computer-score-box {
+    border: 2px solid black;
+    border-radius: 14px;
+    width: 124px;
+    height: 45px;
 }
 
 .box > p {
@@ -84,22 +88,22 @@ button:active {
     scale: 1.02;
 }
 
-#human-score-box.highlight-red {
+.human-score-box.highlight-red {
     border: 4px solid rgb(182, 53, 53);
     scale: 1.02;
 }
 
-#human-score-box.highlight-green {
+.human-score-box.highlight-green {
     border: 4px solid rgb(51, 88, 26);
     scale: 1.02;
 }
 
-#computer-score-box.highlight-red {
+.computer-score-box.highlight-red {
     border: 4px solid rgb(182, 53, 53);
     scale: 1.02;
 }
 
-#computer-score-box.highlight-green {
+.computer-score-box.highlight-green {
     border: 4px solid rgb(51, 88, 26);
     scale: 1.02;
 }
