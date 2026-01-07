@@ -8,25 +8,37 @@
 
 // Get random computer int choice - return string
 //
-function getComputerChoice() {
-    let random = Math.floor(Math.random() * 3) + 1;
-    const choice = {1:"Rock", 2:"Paper", 3:"Scissors"};
-
-    return choice[random];
-}
-
-// Prompt user int choice - return string
-//
-function getHumanChoice(decision) {
-    const choice = {1:"Rock", 2:"Paper", 3:"Scissors"};
-
-    return choice[decision];
-}
-
-
 let humanScore = 0;
 let computerScore = 0;
+let isGameWon = false;
+const targetScore = 5;
 
+const playButtons = document.querySelector(".button-container");
+
+playButtons.addEventListener("click", (event) => {
+    // Only react to clicks on the actual buttons (rock, paper, scissors)
+    if (!event.target.classList.contains("rock") &&
+        !event.target.classList.contains("paper") &&
+        !event.target.classList.contains("scissors")) {
+        return; // Ignore clicks on container but not on buttons
+    }
+
+        if(isGameWon == true) {
+            // Reset score and ui
+            humanScore = 0;
+            computerScore = 0;
+            isGameWon = false;
+            playRound(event.target.textContent);
+        } else {
+            playRound(event.target.textContent);
+        };
+    });
+
+function getComputerChoice() {
+    let random = Math.floor( (Math.random() * 3) + 1);
+    const choice = {1:"Rock", 2:"Paper", 3:"Scissors"};
+    return choice[random];
+};
 
 function playRound(humanChoice, computerChoice=getComputerChoice()) {
     if ( humanChoice == computerChoice ) {
@@ -44,47 +56,20 @@ function playRound(humanChoice, computerChoice=getComputerChoice()) {
         console.log("You lose!! " + computerChoice + " beats " + humanChoice);
         ++computerScore;
     }
+    whenGameWon();
 }
 
-//const compSelection = getComputerChoice();
-//const humSelection = getHumanChoice();
-
-//playRound(humSelection, compSelection);
-
-
-function playGame() {
-    humanScore = 0;
-    computerScore = 0;
-    let winner;
-
-    
-    
-
-    // Winner?
-    if ( humanScore == computerScore ) {
-        console.log("No winner... Score: " + humanScore + ":" + computerScore);
-    } else if (humanScore > computerScore) {
-        console.log("--> YOU WIN !!! Score: " + humanScore + ":" + computerScore);
-    } else {
-        console.log("--> YOU LOSE... Score: " + humanScore + ":" + computerScore);
+function whenGameWon() {
+    if(humanScore == targetScore || computerScore == targetScore) {
+        setWinnerView();
+        isGameWon = true;
     }
-}
+};
 
-playGame();
-
-// Buttons to play
-const documentBody = document.querySelector("body");
-
-const rockButton = document.createElement("button");
-rockButton.textContent = "Rock";
-documentBody.appendChild(rockButton);
-const paperButton = document.createElement("button");
-paperButton.textContent = "Paper";
-documentBody.appendChild(paperButton);
-const scissorsButton = document.createElement("button");
-scissorsButton.textContent = "Scissors";
-documentBody.appendChild(scissorsButton);
-
-documentBody.addEventListener("click", (event) => {
-    playRound(event.target.textContent);
-});
+function setWinnerView() {
+    if (humanScore > computerScore) {
+                console.log("--> YOU WIN !!! Score: " + humanScore + ":" + computerScore);
+        } else {
+            console.log("--> YOU LOSE... Score: " + humanScore + ":" + computerScore);
+        };
+};
