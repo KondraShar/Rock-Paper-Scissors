@@ -24,6 +24,9 @@ playButtons.addEventListener("click", (event) => {
         return;
     }
 
+    messageDisplay.classList.remove('highlight-green');
+    messageDisplay.classList.remove('highlight-red');
+
     if(isGameWon == true) {
         humanScore = 0;
         computerScore = 0;
@@ -45,16 +48,27 @@ function getComputerChoice() {
 function playRound(humanChoice, computerChoice = getComputerChoice()) {
     if ( humanChoice == computerChoice ) {
         messageDisplay.textContent = humanChoice + " vs " + computerChoice;
-
+        messageDisplay.classList.add('highlight-red');
+        setTimeout(() => {
+            messageDisplay.classList.remove('highlight-red', 'highlight-green');
+        }, 220);
         console.log("Boring!!! It is the same.. " + humanChoice + " neutral to " + computerChoice);
     } else if (
         (humanChoice === "Rock" && computerChoice === "Scissors") ||
         (humanChoice === "Paper" && computerChoice === "Rock") ||
         (humanChoice === "Scissors" && computerChoice === "Paper")
     ) {
+        messageDisplay.classList.add('highlight-green');
+        setTimeout(() => {
+            messageDisplay.classList.remove('highlight-red', 'highlight-green');
+        }, 220);
         messageDisplay.textContent = "You win this round!";
         humanScoreDisplay.textContent = ++humanScore;
     } else {
+        messageDisplay.classList.add('highlight-red');
+        setTimeout(() => {
+            messageDisplay.classList.remove('highlight-red', 'highlight-green');
+        }, 220);
         messageDisplay.textContent = "Computer wins this round!";
         computerScoreDisplay.textContent = ++computerScore;
     }
