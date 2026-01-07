@@ -25,9 +25,10 @@ playButtons.addEventListener("click", (event) => {
     }
 
     if(isGameWon == true) {
-        // Reset score and ui
         humanScore = 0;
         computerScore = 0;
+        humanScoreDisplay.textContent = humanScore;
+        computerScoreDisplay.textContent = computerScore;
         isGameWon = false;
         playRound(event.target.textContent);
         } else {
@@ -43,7 +44,7 @@ function getComputerChoice() {
 
 function playRound(humanChoice, computerChoice = getComputerChoice()) {
     if ( humanChoice == computerChoice ) {
-        messageDisplay.textContent = "Boring... " + humanChoice + " neutral to " + computerChoice;
+        messageDisplay.textContent = humanChoice + " vs " + computerChoice;
 
         console.log("Boring!!! It is the same.. " + humanChoice + " neutral to " + computerChoice);
     } else if (
@@ -51,11 +52,11 @@ function playRound(humanChoice, computerChoice = getComputerChoice()) {
         (humanChoice === "Paper" && computerChoice === "Rock") ||
         (humanChoice === "Scissors" && computerChoice === "Paper")
     ) {
-        console.log("You win this round!");
-        humanScore++;
+        messageDisplay.textContent = "You win this round!";
+        humanScoreDisplay.textContent = ++humanScore;
     } else {
-        console.log("Computer wins this round!");
-        computerScore++;
+        messageDisplay.textContent = "Computer wins this round!";
+        computerScoreDisplay.textContent = ++computerScore;
     }
     whenGameWon();
 }
