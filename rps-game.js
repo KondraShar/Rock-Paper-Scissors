@@ -43,7 +43,7 @@ function getComputerChoice() {
 
 function playRound(humanChoice, computerChoice = getComputerChoice()) {
     if ( humanChoice == computerChoice ) {
-        messageDisplay.textContent("Boring... " + humanChoice + " neutral to " + computerChoice);
+        messageDisplay.textContent = "Boring... " + humanChoice + " neutral to " + computerChoice;
 
         console.log("Boring!!! It is the same.. " + humanChoice + " neutral to " + computerChoice);
     } else if (
