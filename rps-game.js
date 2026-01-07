@@ -14,8 +14,8 @@ const playButtons = document.querySelector(".button-container");
 const humanScoreDisplay = document.querySelector(".human-score");
 const computerScoreDisplay = document.querySelector(".computer-score");
 const messageDisplay = document.querySelector(".message-container");
-const humanBox = document.getElementById("#humanBox");
-const computerBox = document.getElementById("#computerBox");
+const humanBox = document.querySelector(".human-score-box");
+const computerBox = document.querySelector(".computer-score-box");
 
 playButtons.addEventListener("click", (event) => {
     if (!event.target.classList.contains("rock") &&
