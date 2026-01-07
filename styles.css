@@ -45,7 +45,7 @@ body {
 
 .message-container {
     height: 80px;
-    width: 250px;
+    width: 220px;
     border: 2px solid black;
     border-radius: 12px;
     display: flex;;
