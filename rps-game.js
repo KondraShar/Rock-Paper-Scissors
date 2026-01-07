@@ -6,8 +6,6 @@
 //////////////////////////////////////////////////
 */
 
-// Get random computer int choice - return string
-//
 let humanScore = 0;
 let computerScore = 0;
 let isGameWon = false;
@@ -16,13 +14,11 @@ const targetScore = 5;
 const playButtons = document.querySelector(".button-container");
 
 playButtons.addEventListener("click", (event) => {
-    // Only react to clicks on the actual buttons (rock, paper, scissors)
     if (!event.target.classList.contains("rock") &&
         !event.target.classList.contains("paper") &&
         !event.target.classList.contains("scissors")) {
-        return; // Ignore clicks on container but not on buttons
+        return;
     }
-
         if(isGameWon == true) {
             // Reset score and ui
             humanScore = 0;
