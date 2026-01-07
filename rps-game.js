@@ -10,7 +10,6 @@ let humanScore = 0;
 let computerScore = 0;
 let isGameWon = false;
 const targetScore = 5;
-const computerChoice = getComputerChoice();
 const playButtons = document.querySelector(".button-container");
 const humanScoreDisplay = document.querySelector(".human-score");
 const computerScoreDisplay = document.querySelector(".computer-score");
@@ -42,9 +41,9 @@ function getComputerChoice() {
     return choice[random];
 };
 
-function playRound(humanChoice, computerChoice) {
+function playRound(humanChoice, computerChoice = getComputerChoice()) {
     if ( humanChoice == computerChoice ) {
-        
+        messageDisplay.textContent("Boring... " + humanChoice + " neutral to " + computerChoice);
 
         console.log("Boring!!! It is the same.. " + humanChoice + " neutral to " + computerChoice);
     } else if (
