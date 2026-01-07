@@ -48,12 +48,8 @@ function getComputerChoice() {
 function resetHighlight() {
     setTimeout(() => {
             messageDisplay.classList.remove('highlight-red', 'highlight-green');
-    }, 220);
-    setTimeout(() => {
-            humanBox.classList.remove('highlight-red', 'highlight-green');
-    }, 220);
-    setTimeout(() => {
             computerBox.classList.remove('highlight-red', 'highlight-green');
+            humanBox.classList.remove('highlight-red', 'highlight-green');
     }, 220);
 };
 
