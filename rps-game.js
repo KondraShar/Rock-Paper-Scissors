@@ -10,7 +10,7 @@ let humanScore = 0;
 let computerScore = 0;
 let isGameWon = false;
 const targetScore = 5;
-
+const computerChoice = getComputerChoice();
 const playButtons = document.querySelector(".button-container");
 
 playButtons.addEventListener("click", (event) => {
@@ -37,7 +37,7 @@ function getComputerChoice() {
     return choice[random];
 };
 
-function playRound(humanChoice, computerChoice=getComputerChoice()) {
+function playRound(humanChoice, computerChoice) {
     if ( humanChoice == computerChoice ) {
         console.log("Boring!!! It is the same.. " + humanChoice + " neutral to " + computerChoice);
     } else if (
