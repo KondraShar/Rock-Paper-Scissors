@@ -56,7 +56,6 @@ function resetHighlight() {
 function playRound(humanChoice, computerChoice = getComputerChoice()) {
     if ( humanChoice == computerChoice ) {
         messageDisplay.textContent = humanChoice + " vs " + computerChoice;
-        console.log("Boring!!! It is the same.. " + humanChoice + " neutral to " + computerChoice);
         messageDisplay.classList.add('highlight-red');
         humanBox.classList.add('highlight-red');
         computerBox.classList.add('highlight-red');
