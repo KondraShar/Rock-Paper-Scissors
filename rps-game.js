@@ -14,6 +14,8 @@ const playButtons = document.querySelector(".button-container");
 const humanScoreDisplay = document.querySelector(".human-score");
 const computerScoreDisplay = document.querySelector(".computer-score");
 const messageDisplay = document.querySelector(".message-container");
+const firstLine = document.querySelector(".first-line");
+const secondLine = document.querySelector(".second-line");
 const humanBox = document.querySelector(".human-score-box");
 const computerBox = document.querySelector(".computer-score-box");
 
@@ -29,7 +31,7 @@ playButtons.addEventListener("click", (event) => {
         computerScore = 0;
         humanBox.style.backgroundColor = "white";
         computerBox.style.backgroundColor = "white";
-        messageDisplay.style.fontSize = "1em";
+        firstLine.style.fontSize = "1em";
         humanScoreDisplay.textContent = humanScore;
         computerScoreDisplay.textContent = computerScore;
         isGameWon = false;
@@ -53,9 +55,18 @@ function resetHighlight() {
     }, 220);
 };
 
+function generateEmoji(choice) {
+    const selectionEmoji = {"Rock":"🪨","Paper":"📄","Scissors":"✂️"}
+    return selectionEmoji[choice];
+}
+
 function playRound(humanChoice, computerChoice = getComputerChoice()) {
+
+    const humanEmoji = generateEmoji(humanChoice);
+    const computerEmoji = generateEmoji(computerChoice);
     if ( humanChoice == computerChoice ) {
-        messageDisplay.textContent = humanChoice + " vs " + computerChoice;
+        firstLine.textContent = "Draw";
+        secondLine.textContent = humanEmoji + " vs " + computerEmoji;
         messageDisplay.classList.add('highlight-red');
         humanBox.classList.add('highlight-red');
         computerBox.classList.add('highlight-red');
@@ -65,37 +76,40 @@ function playRound(humanChoice, computerChoice = getComputerChoice()) {
         (humanChoice === "Paper" && computerChoice === "Rock") ||
         (humanChoice === "Scissors" && computerChoice === "Paper")
     ) {
-        messageDisplay.textContent = "You win this round!";
+        firstLine.textContent = "You win this round!";
+        secondLine.textContent = humanEmoji + " beats " + computerEmoji;
         humanScoreDisplay.textContent = ++humanScore;
         humanBox.classList.add('highlight-green');
         messageDisplay.classList.add('highlight-green');
         resetHighlight();
     } else {
-        
-        messageDisplay.textContent = "Computer wins this round!";
+        firstLine.textContent = "Computer wins this round!";
+        secondLine.textContent = humanEmoji + " weak against " + computerEmoji;
         computerScoreDisplay.textContent = ++computerScore;
         computerBox.classList.add('highlight-red');
         messageDisplay.classList.add('highlight-red');
         resetHighlight();
     }
-    whenGameWon();
-}
-
-function whenGameWon() {
+    
     if(humanScore == targetScore || computerScore == targetScore) {
-        setWinnerView();
+        setWinnerView(humanEmoji, computerEmoji);
         isGameWon = true;
     }
-};
 
-function setWinnerView() {
+
+}
+
+
+function setWinnerView(humanEmoji, computerEmoji) {
     if (humanScore > computerScore) {
-            messageDisplay.textContent = "YOU did it!!";
-            messageDisplay.style.fontSize = "14px";
+            firstLine.textContent = "YOU did it!!";
+            firstLine.style.fontSize = "14px";
+            secondLine.textContent = humanEmoji + " beats " + computerEmoji;
             humanBox.style.backgroundColor = "rgb(51, 88, 26)";
         } else {
-            messageDisplay.textContent = "Probably AI inside...";
-            messageDisplay.style.fontSize = "14px";
+            firstLine.textContent = "Probably AI inside...";
+            firstLine.style.fontSize = "14px";
+            secondLine.textContent = humanEmoji + " weak against " + computerEmoji;
             computerBox.style.backgroundColor = "rgb(182, 53, 53)";
         };
 };
